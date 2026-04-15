@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InKantations — nibs, inks, journals & verse</title>
+  <meta name="description" content="A personal journal of fountain pens, inks, journals, poetry and musings by Cat Hermoso.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+    .swatch-brand {
+      font-size: 0.65rem;
+      color: #9aada8;
+      text-align: center;
+      margin-top: 1px;
+      font-style: italic;
+      line-height: 1.2;
+    }
+    /* InKantations script styling */
+    .site-title {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.7rem !important;
+      letter-spacing: 0.04em;
+      color: inherit;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.15);
+    }
+    .footer-logo {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-spacer"></div>
+      <div class="header-title-block">
+        <a href="index.html" class="site-title">InKantations</a>
+        <div class="site-tagline">nibs · inks · journals · verse · musings</div>
+      </div>
+      <button class="search-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="16.5" y1="16.5" x2="23" y2="23"/>
+          <path d="M8 8 Q11 6 14 9" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="nav-tabs" aria-label="Site categories">
+      <a href="category-pens.html"  class="nav-tab tab-pens">Fountain Pen Reviews<span class="sr-only"></span></a>
+      <a href="category-inks.html"  class="nav-tab tab-inks">Inks</a>
+      <a href="category-jrnl.html"  class="nav-tab tab-jrnl">Journals</a>
+      <a href="category-poet.html"  class="nav-tab tab-poet">Poetry</a>
+      <a href="category-mean.html"  class="nav-tab tab-mean">Inklings</a>
+      <a href="about.html"          class="nav-tab tab-about">About Me</a>
+    </nav>
+  </header>
+
+  <!-- ===================== SEARCH OVERLAY ===================== -->
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-box">
+      <label for="searchInput">What are you looking for?</label>
+      <input class="search-input" id="searchInput" type="text" placeholder="pen name, ink color, poem..." autocomplete="off">
+      <button class="search-close" onclick="closeSearch()" aria-label="Close search">&times;</button>
+    </div>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-label="Homepage hero">
+    <svg class="hero-art" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="1200" height="700" fill="#D5E6E5"/>
+      <!-- Open journal pages -->
+      <rect x="120" y="40" width="960" height="620" rx="6" fill="#F7F3F0" stroke="#CDD3C2" stroke-width="2"/>
+      <rect x="120" y="40" width="480" height="620" fill="#F1EDE8"/>
+      <!-- Spine -->
+      <line x1="600" y1="40" x2="600" y2="660" stroke="#CDD3C2" stroke-width="3" opacity="0.5"/>
+      <line x1="600" y1="40" x2="600" y2="660" stroke="#CDD3C2" stroke-width="12" opacity="0.12"/>
+      <!-- Left page lines -->
+      <line x1="160" y1="110" x2="558" y2="110" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="132" x2="530" y2="132" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="154" x2="548" y2="154" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="176" x2="518" y2="176" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="198" x2="542" y2="198" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="220" x2="525" y2="220" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="242" x2="550" y2="242" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="264" x2="510" y2="264" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="286" x2="538" y2="286" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="308" x2="520" y2="308" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="330" x2="546" y2="330" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="352" x2="508" y2="352" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="374" x2="535" y2="374" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="396" x2="515" y2="396" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="418" x2="543" y2="418" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="440" x2="505" y2="440" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="462" x2="530" y2="462" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="484" x2="518" y2="484" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="506" x2="545" y2="506" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="528" x2="512" y2="528" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="550" x2="538" y2="550" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="572" x2="522" y2="572" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="594" x2="540" y2="594" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="160" y1="616" x2="515" y2="616" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <!-- Right page lines -->
+      <line x1="642" y1="110" x2="1000" y2="110" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="132" x2="980" y2="132" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="154" x2="995" y2="154" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="176" x2="965" y2="176" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="198" x2="988" y2="198" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="220" x2="970" y2="220" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="242" x2="998" y2="242" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="264" x2="960" y2="264" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="286" x2="985" y2="286" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="308" x2="968" y2="308" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="330" x2="992" y2="330" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="352" x2="972" y2="352" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="374" x2="988" y2="374" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="396" x2="963" y2="396" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="418" x2="990" y2="418" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="440" x2="970" y2="440" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="462" x2="984" y2="462" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="484" x2="966" y2="484" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="506" x2="993" y2="506" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="528" x2="968" y2="528" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="550" x2="986" y2="550" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="572" x2="974" y2="572" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="594" x2="991" y2="594" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <line x1="642" y1="616" x2="969" y2="616" stroke="#9aada8" stroke-width="1.2" opacity="1"/>
+      <!-- Page-turning curl right -->
+      <path d="M 1060 660 Q 1050 640 1065 622 Q 1080 604 1072 586" stroke="#CDD3C2" stroke-width="10" fill="none" opacity="0.2" stroke-linecap="round"/>
+      <rect x="1048" y="578" width="22" height="82" rx="3" fill="#F1EDE8" opacity="0.65" transform="rotate(-10 1059 619)"/>
+      <!-- Pilot Custom 845 photo on left journal page -->
+      <image href="pilot_custom_845.png" x="230" y="300" width="200" height="360" transform="rotate(-12, 330, 480)" opacity="0.95"/>
+      <!-- Writer's Blood ink bottle above Angel Skin on right journal page -->
+      <image href="writersbloodink.png" x="755" y="60" width="130" height="150" transform="rotate(6, 820, 135)" opacity="0.95"/>
+      <!-- Angel Skin pen photo beside Pilot Custom 845 on left journal page -->
+      <image href="angelskin.png" x="370" y="340" width="195" height="390" transform="rotate(10, 468, 535)" opacity="0.95"/>
+      <!-- Botanical flourishes — left margin -->
+      <path d="M 50 180 Q 78 155 92 200 Q 104 240 86 285 Q 76 315 54 328" stroke="#CDD3C2" stroke-width="1.5" fill="none" opacity="0.75"/>
+      <circle cx="55" cy="175" r="7" fill="#F7CBCA" opacity="0.75"/>
+      <circle cx="38" cy="200" r="5" fill="#D5E6E5" opacity="0.8"/>
+      <circle cx="68" cy="252" r="6" fill="#CDD3C2" opacity="0.75"/>
+      <circle cx="46" cy="298" r="4.5" fill="#F7CBCA" opacity="0.65"/>
+      <path d="M 52 340 Q 72 325 88 352 Q 100 376 88 408 Q 80 430 60 438" stroke="#D5E6E5" stroke-width="1.3" fill="none" opacity="0.85"/>
+      <circle cx="54" cy="337" r="5.5" fill="#F7CBCA" opacity="0.72"/>
+      <!-- Botanical flourishes — right margin -->
+      <path d="M 1140 175 Q 1112 152 1098 196 Q 1086 236 1104 280 Q 1114 310 1136 322" stroke="#CDD3C2" stroke-width="1.5" fill="none" opacity="0.75"/>
+      <circle cx="1138" cy="170" r="7" fill="#F7CBCA" opacity="0.75"/>
+      <circle cx="1155" cy="196" r="5" fill="#D5E6E5" opacity="0.8"/>
+      <circle cx="1122" cy="248" r="6" fill="#CDD3C2" opacity="0.75"/>
+      <path d="M 1140 335 Q 1120 322 1105 348 Q 1094 372 1106 404 Q 1114 426 1132 434" stroke="#D5E6E5" stroke-width="1.3" fill="none" opacity="0.85"/>
+      <circle cx="1138" cy="330" r="5.5" fill="#F7CBCA" opacity="0.72"/>
+      <!-- Bottom botanicals -->
+      <path d="M 780 600 Q 810 572 840 598 Q 858 620 846 654 Q 836 675 814 682" stroke="#CDD3C2" stroke-width="1.3" fill="none" opacity="0.65"/>
+      <circle cx="783" cy="596" r="5.5" fill="#D5E6E5" opacity="0.78"/>
+      <circle cx="808" cy="576" r="4" fill="#F7CBCA" opacity="0.68"/>
+    </svg>
+
+    <div class="hero-content">
+      <p class="hero-kicker">Journey into the Rabbithole</p>
+      <h1 class="hero-title" style="
+        font-family: 'UnifrakturMaguntia', cursive;
+        font-size: clamp(3.4rem, 9vw, 6.2rem);
+        font-weight: 400;
+        line-height: 1.0;
+        letter-spacing: 0.03em;
+        margin: 0 0 0.25em;
+        background: linear-gradient(160deg, #1a4a6a 0%, #2a7a8a 40%, #1a3a5a 75%, #0d2a40 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.25)) drop-shadow(0 0 12px rgba(42,122,138,0.18));
+      ">InKantations</h1>
+      <p class="hero-sub">nibs · inks · verse · musings</p>
+      <a href="#latest" class="hero-cta">Begin reading</a>
+    </div>
+  </section>
+
+  <!-- Page turn -->
+  <div class="page-turn">
+    <svg width="100%" height="32" viewBox="0 0 1200 32" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,0 L1200,0 L1200,32 Q1050,8 900,20 Q750,32 600,16 Q450,0 300,22 Q150,32 0,14 Z" fill="#F7F3F0"/>
+      <path d="M1140,3 Q1175,18 1200,10" stroke="#CDD3C2" stroke-width="1.2" fill="none" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <!-- ===================== SEAL DIVIDER — BLUSH (Fountain Pen Reviews) ===================== -->
+  <div class="seal-divider" aria-hidden="true">
+    <div class="seal-line"></div>
+    <svg class="seal-svg" width="54" height="54" viewBox="0 0 54 54">
+      <circle cx="27" cy="27" r="23" fill="#F7CBCA" stroke="#c9a0a0" stroke-width="1.3"/>
+      <circle cx="27" cy="27" r="18" fill="none" stroke="#c9a0a0" stroke-width="0.8" stroke-dasharray="2.5,2.5"/>
+      <path d="M27 11 C27 11 20 18 20 24 C20 26.5 21.2 28.5 22.5 29.5 L18 40 L27 36 L36 40 L31.5 29.5 C32.8 28.5 34 26.5 34 24 C34 18 27 11 27 11Z" fill="#c9a0a0" opacity="0.88"/>
+      <ellipse cx="27" cy="23" rx="4.5" ry="6.5" fill="#F7CBCA" stroke="#c9a0a0" stroke-width="0.8"/>
+      <path d="M22.5 29.5 Q27 33 31.5 29.5" stroke="#c9a0a0" stroke-width="0.8" fill="none"/>
+    </svg>
+    <div class="seal-line"></div>
+  </div>
+
+  <!-- ===================== LATEST ENTRIES ===================== -->
+  <section class="section" id="latest" aria-labelledby="latest-title">
+    <p class="section-kicker">Latest entries</p>
+    <h2 class="section-title" id="latest-title">Fresh from the inkwell</h2>
+
+
+<div class="card-grid">
+
+      <!-- Entry 1: Pen Review -->
+      <article class="card">
+        <div class="card-thumb" style="background:#D0EEF0;">
+          <img src="pilot_custom_845.png" alt="Pilot Custom 845 fountain pen"/>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Pen Review</div>
+          <h3 class="card-title">Pilot Custom 845 — Smooth as butter</h3>
+          <p class="card-excerpt">18k gold nib, black lacquer, gold trim. A professional's pen that starts on the first stroke.</p>
+          <!-- Update the link below to your new pen category page -->
+          <a href="category-pens.html" class="read-link">Read entry</a>
+        </div>
+      </article>
+
+      <!-- Entry 2: Ink Review -->
+      <article class="card">
+        <div class="card-thumb" style="background:#D0EEF0;">
+          <img src="oster_thunderstorm.png" alt="Robert Oster Thunderstorm ink bottle"/>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Ink Review</div>
+          <h3 class="card-title">Robert Oster Thunderstorm — my favourite blue-black</h3>
+          <p class="card-excerpt">A wet writer with gentle shading and a 5-second dry time. Moody, grey-blue depth.</p>
+          <!-- Update the link below to your new ink category page -->
+          <a href="category-inks.html" class="read-link">Read entry</a>
+        </div>
+      </article>
+
+      <!-- Entry 3: Journal Review -->
+      <article class="card">
+        <div class="card-thumb" style="background:#CDD3C2;">
+           <img src="apica_notebook.png" alt="Apica Premium CD Notebook"/>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Journals</div>
+          <h3 class="card-title">Apica Premium CD Notebook — Diary perfection</h3>
+          <p class="card-excerpt">Cream, ruled, 96 pages. Lays flat and handles the wettest nibs with no ghosting.</p>
+          <!-- Update the link below to your new journal category page -->
+          <a href="category-jrnl.html" class="read-link">Read entry</a>
+        </div>
+      </article>
+
+      <!-- Entry 4: Poetry -->
+      <article class="card">
+        <div class="card-thumb" style="padding:0; overflow:hidden;">
+          <img src="poetrycardthumb.webp" alt="Open journal with InKantations logo and fountain pen on a wooden desk" style="width:100%; height:100%; object-fit:cover; display:block;"/>
+        </div>
+        <div class="card-body">
+          <div class="card-tag">Poetry</div>
+          <h3 class="card-title">Poem for a poet</h3>
+          <p class="card-excerpt">"Your verse falls upon my skin, trailing goosebumps in its wake..."</p>
+          <a href="category-poet.html" class="read-link">Read poem</a>
+        </div>
+      </article>
+
+    </div>
+ </section>
+
+  <!-- ===================== SEAL DIVIDER — TEAL (Currently Inked) ===================== -->
+  <div class="seal-divider" aria-hidden="true">
+    <div class="seal-line"></div>
+    <svg class="seal-svg" width="54" height="54" viewBox="0 0 54 54">
+      <circle cx="27" cy="27" r="23" fill="#6DD7D8" stroke="#3a9a9a" stroke-width="1.3"/>
+      <circle cx="27" cy="27" r="18" fill="none" stroke="#3a9a9a" stroke-width="0.8" stroke-dasharray="2.5,2.5"/>
+      <path d="M27 11 C27 11 20 18 20 24 C20 26.5 21.2 28.5 22.5 29.5 L18 40 L27 36 L36 40 L31.5 29.5 C32.8 28.5 34 26.5 34 24 C34 18 27 11 27 11Z" fill="#3a9a9a" opacity="0.88"/>
+      <ellipse cx="27" cy="23" rx="4.5" ry="6.5" fill="#6DD7D8" stroke="#3a9a9a" stroke-width="0.8"/>
+      <path d="M22.5 29.5 Q27 33 31.5 29.5" stroke="#3a9a9a" stroke-width="0.8" fill="none"/>
+    </svg>
+    <div class="seal-line"></div>
+  </div>
+
+  <!-- ===================== CURRENTLY INKED ===================== -->
+  <section class="section section-alt" aria-labelledby="ci-title">
+    <p class="section-kicker">Currently inked</p>
+    <h2 class="section-title" id="ci-title">Pens on my desk right now</h2>
+
+    <div class="ci-grid">
+      <div class="ci-card">
+        <div class="ci-bar" style="background:#5a6a7a;"></div>
+        <div class="ci-pen">Pilot Custom 845 (M)</div>
+        <div class="ci-ink">Robert Oster Thunderstorm</div>
+        <div class="ci-swatch" style="background:#5a6a7a;" title="Robert Oster Thunderstorm"></div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-bar" style="background:#2a1a2e;"></div>
+        <div class="ci-pen">Leonardo Momento Zero Grande (M)</div>
+        <div class="ci-ink">De Atramentis William Shakespeare</div>
+        <div class="ci-swatch" style="background:#2a1a2e;" title="De Atramentis William Shakespeare"></div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-bar" style="background:#e0705a;"></div>
+        <div class="ci-pen">Diplomat Aero (B)</div>
+        <div class="ci-ink">MB Coral (Origin Collection)</div>
+        <div class="ci-swatch" style="background:#e0705a;" title="MB Coral"></div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-bar" style="background:#3a8080;"></div>
+        <div class="ci-pen">MB Origin 145</div>
+        <div class="ci-ink">Diamine Canalside</div>
+        <div class="ci-swatch" style="background:#3a8080;" title="Diamine Canalside"></div>
+      </div>
+      <div class="ci-card">
+        <div class="ci-bar" style="background:#7a8a1a;"></div>
+        <div class="ci-pen">MB Egyptomania</div>
+        <div class="ci-ink">Pilot Iroshizuku Hoteison</div>
+        <div class="ci-swatch" style="background:#7a8a1a;" title="Pilot Iroshizuku Hoteison"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SEAL DIVIDER — PINK (Poetry) ===================== -->
+  <div class="seal-divider" aria-hidden="true">
+    <div class="seal-line"></div>
+    <svg class="seal-svg" width="54" height="54" viewBox="0 0 54 54">
+      <circle cx="27" cy="27" r="23" fill="#f0d6e8" stroke="#b080a0" stroke-width="1.3"/>
+      <circle cx="27" cy="27" r="18" fill="none" stroke="#b080a0" stroke-width="0.8" stroke-dasharray="2.5,2.5"/>
+      <path d="M27 11 C27 11 20 18 20 24 C20 26.5 21.2 28.5 22.5 29.5 L18 40 L27 36 L36 40 L31.5 29.5 C32.8 28.5 34 26.5 34 24 C34 18 27 11 27 11Z" fill="#b080a0" opacity="0.88"/>
+      <ellipse cx="27" cy="23" rx="4.5" ry="6.5" fill="#f0d6e8" stroke="#b080a0" stroke-width="0.8"/>
+      <path d="M22.5 29.5 Q27 33 31.5 29.5" stroke="#b080a0" stroke-width="0.8" fill="none"/>
+    </svg>
+    <div class="seal-line"></div>
+  </div>
+
+  <!-- ===================== POETRY ===================== -->
+  <section class="section section-teal" aria-labelledby="poetry-title">
+    <p class="section-kicker">Poetry</p>
+    <h2 class="section-title" id="poetry-title">Words in ink</h2>
+   
+    <div class="poem-grid">
+
+      <!-- Poem 1: How my morning begins -->
+      <div class="poem-card">
+        <h3 class="poem-title">How my morning begins</h3>
+        <p class="poem-lines">
+          Sixteen grams of dark roast...
+        </p>
+        <p class="poem-copyright">Copyright 2026. Cat Hermoso. All Rights Reserved.</p>
+        <p style="margin-top:0.75rem;">
+          <!-- LINK UPDATED BELOW -->
+          <a href="category-poet.html#poem-morning" class="read-link" style="color:#5D6B6B; border-bottom-color:#5D6B6B;">Read poem</a>
+        </p>
+      </div>
+
+      <!-- Poem 2: Making Chai -->
+      <div class="poem-card">
+        <h3 class="poem-title">Making Chai</h3>
+        <p class="poem-lines">
+          Five green pods to crack and split...
+        </p>
+        <p class="poem-copyright">Copyright 2026. Cat Hermoso. All Rights Reserved.</p>
+        <p style="margin-top:0.75rem;">
+          <!-- LINK UPDATED BELOW -->
+          <a href="category-poet.html#poem-chai" class="read-link" style="color:#5D6B6B; border-bottom-color:#5D6B6B;">Read poem</a>
+        </p>
+      </div>
+
+      <!-- Poem 3: Poem for a poet -->
+      <div class="poem-card">
+        <h3 class="poem-title">Poem for a poet</h3>
+        <p class="poem-lines">
+          Your verse falls upon my skin...
+        </p>
+        <p class="poem-copyright">Copyright 2026. Cat Hermoso. All Rights Reserved.</p>
+        <p style="margin-top:0.75rem;">
+          <!-- LINK UPDATED BELOW -->
+          <a href="category-poet.html#poem-poet" class="read-link" style="color:#5D6B6B; border-bottom-color:#5D6B6B;">Read poem</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== SEAL DIVIDER — MIST (Ink Gallery) ===================== -->
+  <div class="seal-divider" aria-hidden="true">
+    <div class="seal-line"></div>
+    <svg class="seal-svg" width="54" height="54" viewBox="0 0 54 54">
+      <circle cx="27" cy="27" r="23" fill="#D5E6E5" stroke="#6a9a9a" stroke-width="1.3"/>
+      <circle cx="27" cy="27" r="18" fill="none" stroke="#6a9a9a" stroke-width="0.8" stroke-dasharray="2.5,2.5"/>
+      <path d="M27 11 C27 11 20 18 20 24 C20 26.5 21.2 28.5 22.5 29.5 L18 40 L27 36 L36 40 L31.5 29.5 C32.8 28.5 34 26.5 34 24 C34 18 27 11 27 11Z" fill="#6a9a9a" opacity="0.88"/>
+      <ellipse cx="27" cy="23" rx="4.5" ry="6.5" fill="#D5E6E5" stroke="#6a9a9a" stroke-width="0.8"/>
+      <path d="M22.5 29.5 Q27 33 31.5 29.5" stroke="#6a9a9a" stroke-width="0.8" fill="none"/>
+    </svg>
+    <div class="seal-line"></div>
+  </div>
+
+  <!-- ===================== INK SWATCH GALLERY ===================== -->
+  <section class="section section-blush" aria-labelledby="swatches-title">
+    <p class="section-kicker">Ink swatch gallery</p>
+    <h2 class="section-title" id="swatches-title">Every ink, by color</h2>
+
+    <div class="swatch-filters" role="group" aria-label="Filter ink swatches by color family">
+      <button class="swatch-filter active" onclick="filterSwatches('all', this)">All</button>
+      <button class="swatch-filter" onclick="filterSwatches('blues', this)">Blues</button>
+      <button class="swatch-filter" onclick="filterSwatches('teals', this)">Teals</button>
+      <button class="swatch-filter" onclick="filterSwatches('greens', this)">Greens</button>
+      <button class="swatch-filter" onclick="filterSwatches('reds', this)">Reds</button>
+      <button class="swatch-filter" onclick="filterSwatches('purples', this)">Purples</button>
+      <button class="swatch-filter" onclick="filterSwatches('browns', this)">Browns</button>
+      <button class="swatch-filter" onclick="filterSwatches('blacks', this)">Blacks</button>
+      <button class="swatch-filter" onclick="filterSwatches('oranges', this)">Oranges</button>
+    </div>
+
+    <div class="swatch-gallery" id="swatchGallery">
+      <!-- PILOT IROSHIZUKU -->
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#d93030;" title="Pilot Iroshizuku · Momiji · Bright Red"></div><div class="swatch-name">Momiji</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#9b3dbf;" title="Pilot Iroshizuku · Murasaki Shikibu · Bright Purple"></div><div class="swatch-name">Murasaki Shikibu</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#1a8fcf;" title="Pilot Iroshizuku · Kon-peki · Bright Blue"></div><div class="swatch-name">Kon-peki</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#4a8a5a;" title="Pilot Iroshizuku · Syoro · Shading Green"></div><div class="swatch-name">Syoro</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#7ab8d8;" title="Pilot Iroshizuku · Tsuyukusa · Shading Light Blue"></div><div class="swatch-name">Tsuyukusa</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#e06090;" title="Pilot Iroshizuku · Tsutsujii · Sheen Pink"></div><div class="swatch-name">Tsutsujii</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <!-- PILOT IROSHIZUKU 100TH ANNIVERSARY -->
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#c03040;" title="Pilot Iroshizuku 100th Anniversary · Bishamonten · Sheen Red"></div><div class="swatch-name">Bishamonten</div><div class="swatch-brand">Pilot Iroshizuku 100th</div></div>
+      <div class="swatch-item" data-family="oranges"><div class="swatch-circle" style="background:#e8c030;" title="Pilot Iroshizuku 100th Anniversary · Daikokuten · Bright Yellow"></div><div class="swatch-name">Daikokuten</div><div class="swatch-brand">Pilot Iroshizuku 100th</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#6abbe8;" title="Pilot Iroshizuku 100th Anniversary · Ebisu · Sky Blue"></div><div class="swatch-name">Ebisu</div><div class="swatch-brand">Pilot Iroshizuku 100th</div></div>
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#3cb85a;" title="Pilot Iroshizuku 100th Anniversary · Fuku-roku-ju · Bright Green"></div><div class="swatch-name">Fuku-roku-ju</div><div class="swatch-brand">Pilot Iroshizuku 100th</div></div>
+      <div class="swatch-item" data-family="blacks"><div class="swatch-circle" style="background:#1e3a22;" title="Pilot Iroshizuku 100th Anniversary · Hoteison · Dark Green Black"></div><div class="swatch-name">Hoteison</div><div class="swatch-brand">Pilot Iroshizuku 100th</div></div>
+      <!-- PILOT IROSHIZUKU 15 ML -->
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#2a5ab0;" title="Pilot Iroshizuku · Asa Gao · Red Sheen Blue"></div><div class="swatch-name">Asa Gao</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <div class="swatch-item" data-family="oranges"><div class="swatch-circle" style="background:#c8a030;" title="Pilot Iroshizuku · Ina-ho · Shading Dark Yellow"></div><div class="swatch-name">Ina-ho</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#6a9a50;" title="Pilot Iroshizuku · Chiku-rin · Shading Bamboo Green"></div><div class="swatch-name">Chiku-rin</div><div class="swatch-brand">Pilot Iroshizuku</div></div>
+      <!-- JACQUES HERBIN -->
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#1a5a9a;" title="Jacques Herbin · Bleu Ocean · Gold Shimmer Blue"></div><div class="swatch-name">Bleu Ocean</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#2a8a5a;" title="Jacques Herbin · Emeraude de Chivor · Gold Shimmer Green"></div><div class="swatch-name">Émeraude de Chivor</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#7a3a9a;" title="Jacques Herbin · Améthyste de l'Oural · Silver Shimmer Purple"></div><div class="swatch-name">Améthyste de l'Oural</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="oranges"><div class="swatch-circle" style="background:#d86030;" title="Jacques Herbin · Cornaline d'Egypte · Silver Shimmer Orange"></div><div class="swatch-name">Cornaline d'Egypte</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#3a6ab0;" title="Jacques Herbin · Kyanite du Nepal · Silver Shimmer Blue"></div><div class="swatch-name">Kyanite du Nepal</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="teals"><div class="swatch-circle" style="background:#2a8a8a;" title="Jacques Herbin · Bleu Calanque · Shading Teal"></div><div class="swatch-name">Bleu Calanque</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#4a7a3a;" title="Jacques Herbin · Lierre Sauvage · Shading Green"></div><div class="swatch-name">Lierre Sauvage</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#7a9aaa;" title="Jacques Herbin · Vert de Gris · Shading Blue Grey"></div><div class="swatch-name">Vert de Gris</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#3a5ab0;" title="Jacques Herbin · Eclat de Saphir · Bright Blue Purple"></div><div class="swatch-name">Éclat de Saphir</div><div class="swatch-brand">Jacques Herbin</div></div>
+      <!-- SAILOR INKS -->
+      <div class="swatch-item" data-family="teals"><div class="swatch-circle" style="background:#2a7a7a;" title="Sailor · Yamadori · Red Sheen Teal"></div><div class="swatch-name">Yamadori</div><div class="swatch-brand">Sailor</div></div>
+      <div class="swatch-item" data-family="blacks"><div class="swatch-circle" style="background:#1a1a1a;" title="Sailor · Black · Saturated Black"></div><div class="swatch-name">Black</div><div class="swatch-brand">Sailor</div></div>
+      <!-- SAILOR MANYO -->
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#3a7aaa;" title="Sailor Manyo · Yomogi · Shading Blue"></div><div class="swatch-name">Yomogi</div><div class="swatch-brand">Sailor Manyo</div></div>
+      <!-- SAILOR DYE -->
+      <div class="swatch-item" data-family="blacks"><div class="swatch-circle" style="background:#101010;" title="Sailor Dye Ink · Kiwaguro · Matte Black"></div><div class="swatch-name">Kiwaguro</div><div class="swatch-brand">Sailor Dye</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#8a9ab0;" title="Sailor Dye Ink · Dye Ink 223 · Shading Gray Blue"></div><div class="swatch-name">Dye Ink 223</div><div class="swatch-brand">Sailor Dye</div></div>
+      <!-- TWSBI 1791 -->
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#2aaa6a;" title="TWSBI 1791 · Emerald Green · Shading"></div><div class="swatch-name">Emerald Green</div><div class="swatch-brand">TWSBI 1791</div></div>
+      <div class="swatch-item" data-family="oranges"><div class="swatch-circle" style="background:#d84020;" title="TWSBI 1791 · Orange · Red Orange"></div><div class="swatch-name">Orange</div><div class="swatch-brand">TWSBI 1791</div></div>
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#8aaa30;" title="TWSBI 1791 · Prairie Green · Shading Yellow Green"></div><div class="swatch-name">Prairie Green</div><div class="swatch-brand">TWSBI 1791</div></div>
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#f0a0c0;" title="TWSBI 1791 · Pink · Bright Pink"></div><div class="swatch-name">Pink</div><div class="swatch-brand">TWSBI 1791</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#5a3a90;" title="TWSBI 1791 · Royal Purple"></div><div class="swatch-name">Royal Purple</div><div class="swatch-brand">TWSBI 1791</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#6aaad8;" title="TWSBI 1791 · Sky Blue"></div><div class="swatch-name">Sky Blue</div><div class="swatch-brand">TWSBI 1791</div></div>
+      <!-- MONT BLANC -->
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#2a5a30;" title="Mont Blanc · Irish Green · Shading Dark Green"></div><div class="swatch-name">Irish Green</div><div class="swatch-brand">Mont Blanc</div></div>
+      <div class="swatch-item" data-family="blacks"><div class="swatch-circle" style="background:#8a8a8a;" title="Mont Blanc · Oyster Grey · Shading Grey"></div><div class="swatch-name">Oyster Grey</div><div class="swatch-brand">Mont Blanc</div></div>
+      <!-- NOODLER'S -->
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#1a50d0;" title="Noodler's · Baystate Blue · Permanent Blue"></div><div class="swatch-name">Baystate Blue</div><div class="swatch-brand">Noodler's</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#90204a;" title="Noodler's · Black Swan in Australian Roses · Saturated Red Violet"></div><div class="swatch-name">Black Swan</div><div class="swatch-brand">Noodler's</div></div>
+      <div class="swatch-item" data-family="browns"><div class="swatch-circle" style="background:#7a4a20;" title="Noodler's · Kiowa Pecan · Saturated Brown"></div><div class="swatch-name">Kiowa Pecan</div><div class="swatch-brand">Noodler's</div></div>
+      <div class="swatch-item" data-family="blacks"><div class="swatch-circle" style="background:#6a6a6a;" title="Noodler's · Lexington Grey · Saturated Gray"></div><div class="swatch-name">Lexington Grey</div><div class="swatch-brand">Noodler's</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#7a2a5a;" title="Noodler's · Tiananmen · Shading Red Violet"></div><div class="swatch-name">Tiananmen</div><div class="swatch-brand">Noodler's</div></div>
+      <!-- DIAMINE -->
+      <div class="swatch-item" data-family="oranges"><div class="swatch-circle" style="background:#b86030;" title="Diamine · Ancient Copper · Shading Red Orange"></div><div class="swatch-name">Ancient Copper</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#2a5aaa;" title="Diamine · Majestic Blue · Red Sheen Blue"></div><div class="swatch-name">Majestic Blue</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#1a3a7a;" title="Diamine · Oxford Blue · Saturated Blue"></div><div class="swatch-name">Oxford Blue</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#c02020;" title="Diamine · Red Dragon · Saturated Red"></div><div class="swatch-name">Red Dragon</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="teals"><div class="swatch-circle" style="background:#3abaa8;" title="Diamine · Aurora Borealis · Teal"></div><div class="swatch-name">Aurora Borealis</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#1a2a6a;" title="Diamine · Majestic Blue (15ml) · Sheen Dark Blue"></div><div class="swatch-name">Majestic Blue (15ml)</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="blacks"><div class="swatch-circle" style="background:#202020;" title="Diamine · Onyx Black"></div><div class="swatch-name">Onyx Black</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="browns"><div class="swatch-circle" style="background:#5a1a1a;" title="Diamine · Oxblood · Saturated Dark Red"></div><div class="swatch-name">Oxblood</div><div class="swatch-brand">Diamine</div></div>
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#d02040;" title="Diamine · Ruby · Bright Red"></div><div class="swatch-name">Ruby</div><div class="swatch-brand">Diamine</div></div>
+      <!-- CULT PENS -->
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#8a3060;" title="Cult Pens · Little Bob · Green Sheen Red Purple"></div><div class="swatch-name">Little Bob</div><div class="swatch-brand">Cult Pens</div></div>
+      <div class="swatch-item" data-family="teals"><div class="swatch-circle" style="background:#1a5a58;" title="Cult Pens · Little Chris · Red Sheen Dark Teal"></div><div class="swatch-name">Little Chris</div><div class="swatch-brand">Cult Pens</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#3a6aaa;" title="Cult Pens · Little Mo · Red Sheen Blue"></div><div class="swatch-name">Little Mo</div><div class="swatch-brand">Cult Pens</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#7a3a9a;" title="Cult Pens · Little Pip · Gold Sheen Purple"></div><div class="swatch-name">Little Pip</div><div class="swatch-brand">Cult Pens</div></div>
+      <!-- DIAMINE SHIMMERTASTIC -->
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#b82030;" title="Diamine Shimmertastic · Dragon Blood · Gold Shimmer Red"></div><div class="swatch-name">Dragon Blood</div><div class="swatch-brand">Diamine Shimmertastic</div></div>
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#d03040;" title="Diamine Shimmertastic · Red Lustre · Gold Shimmer Red"></div><div class="swatch-name">Red Lustre</div><div class="swatch-brand">Diamine Shimmertastic</div></div>
+      <!-- DIAMINE 150 YEARS -->
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#1a4a28;" title="Diamine 150 Years · Dark Forest · Saturated Dark Green"></div><div class="swatch-name">Dark Forest</div><div class="swatch-brand">Diamine 150 Years</div></div>
+      <!-- DIAMINE INKVENT -->
+      <div class="swatch-item" data-family="reds"><div class="swatch-circle" style="background:#d02020;" title="Diamine Inkvent · Poinsettia · Bright Red"></div><div class="swatch-name">Poinsettia</div><div class="swatch-brand">Diamine Inkvent</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#3a6ab8;" title="Diamine Inkvent · Polar Glow · Sheen Blue"></div><div class="swatch-name">Polar Glow</div><div class="swatch-brand">Diamine Inkvent</div></div>
+      <div class="swatch-item" data-family="blacks"><div class="swatch-circle" style="background:#c0c0c0;" title="Diamine Inkvent · Snow Storm · Silver Shimmer Grey"></div><div class="swatch-name">Snow Storm</div><div class="swatch-brand">Diamine Inkvent</div></div>
+      <!-- ROBERT OSTER -->
+      <div class="swatch-item" data-family="oranges"><div class="swatch-circle" style="background:#c8a020;" title="Robert Oster · African Gold · Shading Dark Yellow"></div><div class="swatch-name">African Gold</div><div class="swatch-brand">Robert Oster</div></div>
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#2a5aaa;" title="Robert Oster · Fire and Ice · Red Sheen Blue"></div><div class="swatch-name">Fire and Ice</div><div class="swatch-brand">Robert Oster</div></div>
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#3ab840;" title="Robert Oster · Peppermint · Bright Green"></div><div class="swatch-name">Peppermint</div><div class="swatch-brand">Robert Oster</div></div>
+      <!-- ROHRER AND KLINGNER -->
+      <div class="swatch-item" data-family="greens"><div class="swatch-circle" style="background:#8a8a30;" title="Rohrer &amp; Klingner · Alt-Goldgrün · Shading Green Gold"></div><div class="swatch-name">Alt-Goldgrün</div><div class="swatch-brand">Rohrer &amp; Klingner</div></div>
+      <div class="swatch-item" data-family="purples"><div class="swatch-circle" style="background:#5a3060;" title="Rohrer &amp; Klingner · Scabiosa · Iron Gall Purple"></div><div class="swatch-name">Scabiosa</div><div class="swatch-brand">Rohrer &amp; Klingner</div></div>
+      <!-- VINTA -->
+      <div class="swatch-item" data-family="blues"><div class="swatch-circle" style="background:#2a60b0;" title="Vinta · Dugong Bughaw · Red Sheen Blue"></div><div class="swatch-name">Dugong Bughaw</div><div class="swatch-brand">Vinta</div></div>
+    </div>
+  </section>
+
+  <!-- ===================== SEAL DIVIDER — MAUVE (Inklings) ===================== -->
+  <div class="seal-divider" aria-hidden="true">
+    <div class="seal-line"></div>
+    <svg class="seal-svg" width="54" height="54" viewBox="0 0 54 54">
+      <circle cx="27" cy="27" r="23" fill="#e8d5e0" stroke="#9a7a8a" stroke-width="1.3"/>
+      <circle cx="27" cy="27" r="18" fill="none" stroke="#9a7a8a" stroke-width="0.8" stroke-dasharray="2.5,2.5"/>
+      <path d="M27 11 C27 11 20 18 20 24 C20 26.5 21.2 28.5 22.5 29.5 L18 40 L27 36 L36 40 L31.5 29.5 C32.8 28.5 34 26.5 34 24 C34 18 27 11 27 11Z" fill="#9a7a8a" opacity="0.88"/>
+      <ellipse cx="27" cy="23" rx="4.5" ry="6.5" fill="#e8d5e0" stroke="#9a7a8a" stroke-width="0.8"/>
+      <path d="M22.5 29.5 Q27 33 31.5 29.5" stroke="#9a7a8a" stroke-width="0.8" fill="none"/>
+    </svg>
+    <div class="seal-line"></div>
+  </div>
+
+  <!-- ===================== Inklings===================== -->
+  <section class="section section-alt" aria-labelledby="Inklings-title">
+    <p class="section-kicker">Inklings</p>
+    <h2 class="section-title" id="Inklings-title">Thoughts between the lines</h2>
+    <div class="inklings-grid">
+      <article class="inklings-card">
+        <div class="card-tag">Essay</div>
+        <h3 class="card-title">2020: The Year That Never Was</h3>
+        <p class="card-excerpt">Thoughts in prose about all the craziness that happened in 2020</p>
+        <p class="card-meta">15 April 2026 · 4 min read</p>
+        <a href="category-mean.html" class="read-link">Read more</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="footer-logo">InKantations</div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="category-pens.html">Fountain Pen Reviews</a>
+      <a href="category-inks.html">Inks</a>
+      <a href="category-jrnl.html">Journals</a>
+      <a href="category-poet.html">Poetry</a>
+      <a href="category-mean.html">Inklings</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <div class="footer-rule"></div>
+    <p class="footer-tagline">Written with love &amp; a wet nib.</p>
+    <p class="footer-copy">&copy; 2026 Cat Hermoso. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function openSearch() {
+      document.getElementById('searchOverlay').classList.add('open');
+      setTimeout(() => document.getElementById('searchInput').focus(), 50);
+    }
+    function closeSearch() {
+      document.getElementById('searchOverlay').classList.remove('open');
+    }
+    document.getElementById('searchOverlay').addEventListener('click', function(e) {
+      if (e.target === this) closeSearch();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeSearch();
+    });
+
+    function filterSwatches(family, btn) {
+      document.querySelectorAll('.swatch-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.swatch-item').forEach(item => {
+        item.style.display = (family === 'all' || item.dataset.family === family) ? 'flex' : 'none';
+      });
+    }
+  </script>
+
+</body>
+</html>
