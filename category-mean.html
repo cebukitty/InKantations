@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inklings — The InKanter's Diary</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .mosaic-frame {
+      border: 12px solid var(--paper);
+      background: var(--white);
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(93,107,107,0.15);
+      position: relative;
+    }
+    .mosaic-img {
+      width: 100%;
+      border: 4px solid var(--sage);
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
+    .mosaic-caption {
+      font-family: var(--font-hand);
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--slate-light);
+      font-style: italic;
+    }
+    .poem-box {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      line-height: 2;
+      color: var(--slate);
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    .site-title {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.7rem !important;
+      letter-spacing: 0.04em;
+    }
+    .footer-logo {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header and Nav remain the same -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-spacer"></div>
+      <div class="header-title-block">
+        <a href="index.html" class="site-title">InKantations</a>
+        <div class="site-tagline">nibs · inks · journals · verse · musings</div>
+      </div>
+      <button class="search-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="23" y2="23"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="nav-tabs" aria-label="Site categories">
+      <a href="category-pens.html" class="nav-tab tab-pens">Fountainpen Reviews</a>
+      <a href="category-inks.html" class="nav-tab tab-inks">Inks</a>
+      <a href="category-jrnl.html" class="nav-tab tab-jrnl">Journals</a>
+      <a href="category-poet.html" class="nav-tab tab-poet">Poetry</a>
+      <a href="category-mean.html" class="nav-tab tab-mean active">Inklings</a>
+      <a href="about.html" class="nav-tab tab-about">About Me</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <h2 class="section-title">Inklings</h2>
+    
+    <article class="mosaic-frame" style="max-width: 800px; margin: 0 auto;">
+      <h3 style="font-family: var(--font-hand); font-size: 36px; text-align: center; margin-bottom: 1.5rem; color: var(--slate-light);">2020: The Year That Never Was</h3>
+      
+      <!-- Mosaic Image -->
+      <img src="mosaic_2020.webp" alt="2020 Mosaic Artwork" class="mosaic-img">
+      <p class="mosaic-caption">Gemini AI's interpretation of my Prose Poem</p>
+
+      <!-- Poem Layout Restored -->
+      <div class="poem-box">
+        <p>2020 began with an ominous omen:<br>
+        Taal Volcano, wakes up from its millennial sleep<br>
+        with thunder and ash.<br>
+        Then from the far East, a creeping whisper<br>
+        of an invisible specter that steals breath.</p>
+
+        <p style="margin-top: 1.5rem;">A sickness that quickly spreads,<br>
+        through sneeze or cough, swiftly spilling<br>
+        beyond borders, trapping tourists<br>
+        inside ships.</p>
+
+        <p style="margin-top: 1.5rem;">Hospitals filled to the brim<br>
+        with the sick and dying;<br>
+        Countless heroes in white fall victim<br>
+        to exhaustion and disease.</p>
+
+        <p style="margin-top: 1.5rem;">People shop and hoard in panic —<br>
+        toilet paper, alcohol, masks in short supply.<br>
+        World governments halt travel and trade;<br>
+        houses become prisons.</p>
+
+        <p style="margin-top: 1.5rem;">Days stretch to weeks,<br>
+        stretch to months, to a year.<br>
+        Social distancing becomes the norm<br>
+        as everyone quarantines inside their homes.</p>
+
+        <p style="margin-top: 1.5rem;">Handwashing takes the place of handshakes,<br>
+        Masks replace smiles and hugs.<br>
+        Movies, theaters, parties<br>
+        are now a thing of the past.</p>
+
+        <p style="margin-top: 1.5rem;">We hide and bide our time<br>
+        as vaccines are swiftly made,<br>
+        waiting in line for the prick<br>
+        to keep us from getting sick.</p>
+      </div>
+    </article>
+  </main>
+  
+  <!-- Footer remains the same -->
+</body>
+</html>

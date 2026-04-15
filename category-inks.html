@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ink Reviews — The Inkkeeper's Diary</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    .site-title {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.7rem !important;
+      letter-spacing: 0.04em;
+    }
+    .footer-logo {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-spacer"></div>
+      <div class="header-title-block">
+        <a href="index.html" class="site-title">InKantations</a>
+        <div class="site-tagline">nibs · inks · journals · verse · musings</div>
+      </div>
+      <button class="search-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="23" y2="23"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="nav-tabs" aria-label="Site categories">
+      <a href="category-pens.html" class="nav-tab tab-pens">Fountain Pen Reviews</a>
+      <a href="category-inks.html" class="nav-tab tab-inks active">Inks</a>
+      <a href="category-jrnl.html" class="nav-tab tab-jrnl">Journals</a>
+      <a href="category-poet.html" class="nav-tab tab-poet">Poetry</a>
+      <a href="category-mean.html" class="nav-tab tab-mean">Inklings</a>
+      <a href="about.html" class="nav-tab tab-about">About Me</a>
+    </nav>
+  </header>
+
+  <!-- ===================== CONTENT ===================== -->
+  <main class="section">
+    <h2 class="section-title">Ink Reviews</h2>
+    
+    <article class="card" style="max-width: 600px; margin: 0 auto; padding: 2rem;">
+      <figure class="post-figure" style="text-align: center; margin-bottom: 2rem;">
+        <img src="oster_thunderstorm.png" alt="Robert Oster Thunderstorm Ink" style="max-width: 300px; border-radius: 8px;">
+        <figcaption style="font-family: var(--font-hand); margin-top: 10px;">Robert Oster Thunderstorm</figcaption>
+      </figure>
+
+      <h3 class="card-title" style="font-size: 28px;">Robert Oster Thunderstorm — my favourite blue-black</h3>
+      
+      <div class="post-body">
+        <p>A wet writer with gentle shading and a 5-second dry time on Apica paper. Not waterproof, but close to perfect for daily notes and journaling.</p>
+        <p>It captures that perfect moody grey-blue depth that feels both professional and evocative.</p>
+
+        <!-- INK DROP RATING SECTION -->
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: var(--base); border-radius: 4px; border: 0.5px solid var(--sage);">
+          <p style="font-family: var(--font-hand); font-size: 18px; font-weight: 700; color: var(--slate); margin-bottom: 1rem;">Ink Properties</p>
+          
+          <div style="display: grid; gap: 12px;">
+            <!-- Shading -->
+            <div style="display: flex; align-items: center; justify-content: space-between; max-width: 300px;">
+              <span style="font-family: var(--font-hand); font-size: 16px;">Shading</span>
+              <div style="display:flex; gap:3px;">
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+              </div>
+            </div>
+            <!-- Dry Time -->
+            <div style="display: flex; align-items: center; justify-content: space-between; max-width: 300px;">
+              <span style="font-family: var(--font-hand); font-size: 16px;">Dry Time</span>
+              <div style="display:flex; gap:3px;">
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#3a8ab0"/></svg>
+                <svg viewBox="0 0 20 20" width="18" height="18"><path d="M10,2 C6,2 4,6 4,10 C4,14 7,18 10,18 C13,18 16,14 16,10 C16,6 14,2 10,2 Z" fill="#CDD3C2"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>

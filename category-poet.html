@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetry — The Inkkeeper's Diary</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    .site-title {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.7rem !important;
+      letter-spacing: 0.04em;
+    }
+    .footer-logo {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-spacer"></div>
+      <div class="header-title-block">
+        <a href="index.html" class="site-title">InKantations</a>
+        <div class="site-tagline">nibs · inks · journals · verse · musings</div>
+      </div>
+      <button class="search-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="23" y2="23"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="nav-tabs" aria-label="Site categories">
+      <a href="category-pens.html" class="nav-tab tab-pens">Fountain Pen Reviews</a>
+      <a href="category-inks.html" class="nav-tab tab-inks">Inks</a>
+      <a href="category-jrnl.html" class="nav-tab tab-jrnl">Journals</a>
+      <a href="category-poet.html" class="nav-tab tab-poet active">Poetry</a>
+      <a href="category-mean.html" class="nav-tab tab-mean">Inklings</a>
+      <a href="about.html" class="nav-tab tab-about">About Me</a>
+    </nav>
+  </header>
+
+ <!-- ===================== CONTENT ===================== -->
+  <main class="section">
+    <h2 class="section-title">Words in Ink</h2>
+
+    <!-- Poem 1: How my morning begins -->
+    <article id="poem-morning" class="card" style="max-width: 600px; margin: 0 auto 2rem; padding: 2rem;">
+      <h3 class="poem-title" style="text-align: center; margin-bottom: 1.5rem;">How my morning begins</h3>
+      <div class="poem-lines" style="text-align: center; font-style: italic; line-height: 2;">
+        <p>Sixteen grams of dark roast,<br>
+        A splash of mist to stay the static,<br>
+        The burrs spin and the beans<br>
+        are ground as fine as sand.</p>
+        <p style="margin-top: 1rem;">Needles go round the coffee grounds,<br>
+        Then a steady weighted stamp to even it out,<br>
+        Then comes the pull — a dark and viscous stream,<br>
+        The crowning achievement a golden crema</p>
+        <p style="margin-top: 1rem;">Milk and steam creates the velvet foam,<br>
+        A dusting of cinnamon and sugar,<br>
+        Whirl with a spoon,<br>
+        Take a sip, enjoy your morning.</p>
+      </div>
+    </article>
+
+    <!-- Poem 2: Making Chai -->
+    <article id="poem-chai" class="card" style="max-width: 600px; margin: 0 auto 2rem; padding: 2rem;">
+      <h3 class="poem-title" style="text-align: center; margin-bottom: 1.5rem;">Making Chai</h3>
+      <div style="background: var(--base); padding: 1rem; border-radius: 4px; border: 1px dashed var(--slate-light); margin-bottom: 1.5rem;">
+        <h4 style="font-family: var(--font-hand); margin-bottom: 0.5rem;">Ingredients:</h4>
+        <ul style="list-style: none; font-size: 14px; color: var(--slate);">
+          <li>☐ Cardamom (5 pods) · 3 cloves · 5 peppercorns</li>
+          <li>☐ 1 tsp fennel · 1 stick cinnamon</li>
+          <li>☐ Sliced ginger · Ground nutmeg</li>
+          <li>☐ Ceylon Tea · Milk · Honey</li>
+        </ul>
+      </div>
+      <div class="poem-lines" style="text-align: center; font-style: italic; line-height: 2;">
+        <p>Five green pods to crack and split,<br>
+        Three cloves for wit,<br>
+        Five peppercorns for a fiery kick,<br>
+        Fennel, cinnamon stick<br>
+        And ginger slice to entice.</p>
+        <p style="margin-top: 1rem;">Toast them all ‘til the spicy vapors bloom,<br>
+        And gives a fragrant hug across the room.<br>
+        Steep in Milk and Ceylon Leaves,<br>
+        Add honey, strain, then pour. Be at ease.</p>
+      </div>
+    </article>
+
+    <!-- Poem 3: Poem for a poet -->
+    <article id="poem-poet" class="card" style="max-width: 600px; margin: 0 auto 2rem; padding: 2rem;">
+      <h3 class="poem-title" style="text-align: center; margin-bottom: 1.5rem;">Poem for a poet</h3>
+      <div class="poem-lines" style="text-align: center; font-style: italic; line-height: 2;">
+        <p>Your verse falls upon my skin,<br>
+        trailing goosebumps in its wake.<br>
+        The languid caress of syllables,<br>
+        the resonance of rhyme—<br>
+        intoxicating as drops of sweetest wine.</p>
+        <p style="margin-top: 1rem;">You weave stanzas into tapestries<br>
+        dyed with ethereal landscapes.<br>
+        You choose each word<br>
+        with a jeweler’s eye,<br>
+        knowing its facets will seduce.</p>
+        <p style="margin-top: 1rem;">Yet I suspect, beyond the skein<br>
+        of iridescent words,<br>
+        lies the throb of a festering wound—<br>
+        your lyrical seduction<br>
+        but an anodyne for a jaded soul.</p>
+      </div>
+    </article>
+  </main>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-logo">InKantations</div>
+    <p class="footer-copy">&copy; 2026 Cat Hermoso.</p>
+  </footer>
+
+  <script>
+    function openSearch() { document.getElementById('searchOverlay').classList.add('open'); }
+  </script>
+</body>
+</html>

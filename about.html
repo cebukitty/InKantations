@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me — The InKanter</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    .site-title {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.7rem !important;
+      letter-spacing: 0.04em;
+    }
+    .footer-logo {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-spacer"></div>
+      <div class="header-title-block">
+        <a href="index.html" class="site-title">InKantations</a>
+        <div class="site-tagline">nibs · inks · journals · verse · musings</div>
+      </div>
+      <button class="search-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="23" y2="23"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="nav-tabs" aria-label="Site categories">
+      <a href="category-pens.html" class="nav-tab tab-pens">Fountain Pen Reviews</a>
+      <a href="category-inks.html" class="nav-tab tab-inks">Inks</a>
+      <a href="category-jrnl.html" class="nav-tab tab-jrnl">Journals</a>
+      <a href="category-poet.html" class="nav-tab tab-poet">Poetry</a>
+      <a href="category-mean.html" class="nav-tab tab-mean">Inklings</a>
+      <a href="about.html" class="nav-tab tab-about active">About Me</a>
+    </nav>
+  </header>
+
+  <!-- ===================== CONTENT ===================== -->
+  <main class="section" style="max-width: 800px; margin: 0 auto;">
+    <h2 class="section-title" style="text-align: center;">About Me</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin-top: 2rem;">
+      
+      <!-- Whimsical Image -->
+      <figure>
+        <img src="cat_inkkeeper.webp" alt="Illustration of Cat Hermoso" style="border-radius: 8px; border: 4px solid var(--paper); box-shadow: 0 10px 30px rgba(93,107,107,0.2);">
+        <figcaption style="font-family: var(--font-hand); text-align: center; margin-top: 10px; color: var(--slate-light);">"Darn, yet another rabbit hole."</figcaption>
+      </figure>
+
+      <!-- Bio Text -->
+      <div class="post-body" style="font-family: var(--font-hand); font-size: 20px;">
+        <p>I have a perfectly reasonable number of fountain pens and inks — <strong>NOT!</strong></p>
+        
+        <p>I’m fascinated by inks that shimmer, shade, and... their whimsical glass bottles. This space is where I indulge that obsession.</p>
+
+        <p>I also dabble in poetry. Some of it thoughtful, or random odes to coffee...tea...insomnia.  Hmm I don't think I've written an ode to ink yet.  Must rectify soon! Be warned, some of my verse suspiciously dramatic and cloying when I'm in the mood.</p>
+
+        <p>When I’m not writing, I’m probably tinkering with mechanical keyboards, chasing that perfect creamy and <em>thocky</em> sound.</p>
+
+        <p>There’s just something really deeply satisfying about the analog. Things you can touch, you can feel and fiddle with and hopefully not break! ;) </p>
+
+        <p>I also love mystery novels and movies, actual life mysteries, sci-fi, fantasy... and science!</p>
+        
+        <p style="border-top: 2px dashed var(--sage); padding-top: 1rem; margin-top: 1rem; color: var(--teal-dark);">
+          <em>Inkantations is where I purge all my obsessions.</em>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-logo">InKantations</div>
+    <p class="footer-copy">&copy; 2026 Cat Hermoso.</p>
+  </footer>
+
+  <script>
+    function openSearch() { document.getElementById('searchOverlay').classList.add('open'); }
+  </script>
+</body>
+</html>

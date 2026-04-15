@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal Reviews — The Inkkeeper's Diary</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <style>
+    .site-title {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.7rem !important;
+      letter-spacing: 0.04em;
+    }
+    .footer-logo {
+      font-family: 'UnifrakturMaguntia', cursive !important;
+      font-size: 1.5rem !important;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="site-header">
+    <div class="header-top">
+      <div class="header-spacer"></div>
+      <div class="header-title-block">
+        <a href="index.html" class="site-title">InKantations</a>
+        <div class="site-tagline">nibs · inks · journals · verse · musings</div>
+      </div>
+      <button class="search-btn" onclick="openSearch()" aria-label="Search">
+        <svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="23" y2="23"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="nav-tabs" aria-label="Site categories">
+      <a href="category-pens.html" class="nav-tab tab-pens">Fountain Pen Reviews</a>
+      <a href="category-inks.html" class="nav-tab tab-inks">Inks</a>
+      <a href="category-jrnl.html" class="nav-tab tab-jrnl active">Journals</a>
+      <a href="category-poet.html" class="nav-tab tab-poet">Poetry</a>
+      <a href="category-mean.html" class="nav-tab tab-mean">Inklings</a>
+      <a href="about.html" class="nav-tab tab-about">About Me</a>
+    </nav>
+  </header>
+
+  <!-- ===================== CONTENT ===================== -->
+  <main class="section">
+    <h2 class="section-title">Journal Reviews</h2>
+    
+    <article class="card" style="max-width: 650px; margin: 0 auto; padding: 2rem;">
+      
+      <!-- New Image Insertion -->
+      <figure style="text-align: center; margin-bottom: 2rem;">
+        <img src="apica_notebook.png" alt="Apica Premium CD Notebook" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+      </figure>
+
+      <h3 class="card-title" style="font-size: 28px;">Apica Premium CD Notebook</h3>
+      
+      <div class="post-body">
+        <div style="background: var(--base); padding: 1rem; border-radius: 4px; border-left: 4px solid var(--sage); margin-bottom: 1.5rem;">
+          <ul style="list-style: none; font-family: var(--font-hand); font-size: 16px;">
+            <li><strong>Format:</strong> Cream, Ruled</li>
+            <li><strong>Binding:</strong> Thread binding (Lays Flat)</li>
+            <li><strong>Length:</strong> 96 pages</li>
+          </ul>
+        </div>
+
+        <p>The Apica Premium CD Notebook is my favorite for diary journaling. It lays flat, which is essential for long-form writing sessions.</p>
+        <p>The paper is incredibly smooth and experiences no bleeding or ghosting, even when using Broad nibs paired with very wet inks.</p>
+
+        <h4 style="font-family: var(--font-hand); font-size: 20px; color: var(--slate); margin: 1.5rem 0 1rem;">Tested With:</h4>
+        <ul style="margin-left: 1.5rem; color: var(--slate); line-height: 1.8;">
+          <li>Pilot Custom 845 (M) + Robert Oster Thunderstorm</li>
+          <li>Diplomat Aero (B) + Diamine Ancient Copper</li>
+          <li>Montblanc LPP 146 (M) + Diamine Writer's Blood</li>
+          <li>Faber Castell Ondoro (M) + De Atramentis William Shakespeare</li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="footer-logo">InKantations</div>
+    <nav class="footer-nav">
+      <a href="category-pens.html">Pen Reviews</a>
+      <a href="category-inks.html">Inks</a>
+      <a href="category-jrnl.html">Journals</a>
+      <a href="category-poet.html">Poetry</a>
+      <a href="category-mean.html">Inklings</a>
+      <a href="about.html">About Me</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Cat Hermoso.</p>
+  </footer>
+
+  <script>
+    function openSearch() { document.getElementById('searchOverlay').classList.add('open'); }
+  </script>
+</body>
+</html>
