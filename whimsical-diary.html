@@ -270,14 +270,14 @@ body::before {
             }, () => {
                 populateGrid(weatherTypes[0]);
             });
-        }
-
-        function populateGrid(baseWeather) {
+        
+	}
+function populateGrid(baseWeather) {
     const grid = document.getElementById('calendarGrid');
     const today = new Date();
     const currentDay = today.getDate();
     
-    // 1. Clear existing labels and cells to prevent duplicates
+    // 1. Reset the grid content to ensure labels are clean
     grid.innerHTML = `
         <div class="day-label">Sun</div><div class="day-label">Mon</div>
         <div class="day-label">Tue</div><div class="day-label">Wed</div>
@@ -285,14 +285,14 @@ body::before {
         <div class="day-label">Sat</div>
     `;
 
-    // 2. Add 3 empty cells because April 1, 2026, is a Wednesday
+    // 2. Add 3 empty cells to shift April 1st to Wednesday
     for (let e = 0; e < 3; e++) {
         const emptyCell = document.createElement('div');
-        emptyCell.className = 'day-cell empty';
+        emptyCell.className = 'day-cell empty'; // Added 'empty' class
         grid.appendChild(emptyCell);
     }
 
-    // 3. Populate the actual days of the month
+    // 3. Populate the actual days 1-30
     for (let i = 1; i <= 30; i++) {
         const cell = document.createElement('div');
         cell.className = 'day-cell';
@@ -313,7 +313,7 @@ body::before {
         grid.appendChild(cell);
     }
 }
-
+        
         function updateEntry(day, weather) {
             const inkColors = {
                 'Sunny': '#3a9a9a',
