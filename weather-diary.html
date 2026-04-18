@@ -460,8 +460,44 @@
             document.getElementById('nextBtn').onclick  = () => goToMonth(m + 1);
         }
 
+        // ── WEATHER CODE → TYPE ───────────────────────────────────────────────
+        function codeToWeather(code) {
+            if (code === 0 || code === 1)          return weatherTypes[0]; // Sunny
+            if (code <= 3)                         return weatherTypes[1]; // Cloudy
+            if (code <= 48)                        return weatherTypes[4]; // Windy/Fog
+            if (code >= 95)                        return weatherTypes[2]; // Stormy → Rainy
+            if (code >= 51)                        return weatherTypes[2]; // Rainy
+            return weatherTypes[1];
+        }
+
+        // ── HISTORICAL WEATHER ────────────────────────────────────────────────
+        async function fetchHistoricalWeather(lat, lon, month) {
+            const c          = MONTHS[month];
+            const monthStart = new Date(YEAR, month - 1, 1);
+            const monthEnd   = new Date(YEAR, month, 1);
+            const today      = new Date();
+
+            if (today < monthStart) return {};   // future month — nothing to fetch
+
+            const endDate = today < monthEnd ? today : new Date(YEAR, month, 0);
+            const fmt = d =>
+                `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+
+            const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}` +
+                        `&start_date=${fmt(monthStart)}&end_date=${fmt(endDate)}&daily=weathercode&timezone=auto`;
+            const res  = await fetch(url);
+            const data = await res.json();
+
+            const byDay = {};
+            (data.daily?.time || []).forEach((dateStr, i) => {
+                const day    = parseInt(dateStr.split('-')[2], 10);
+                byDay[day]   = codeToWeather(data.daily.weathercode[i]);
+            });
+            return byDay;
+        }
+
         // ── CALENDAR ─────────────────────────────────────────────────────────
-        function populateGrid(baseWeather) {
+        function populateGrid(weatherByDay, fallback) {
             const c     = MONTHS[currentMonth];
             const grid  = document.getElementById('calendarGrid');
             const today = new Date();
@@ -494,9 +530,7 @@
                     cell.style.opacity = '0.2';
                     cell.innerHTML = `<span class="day-num">${i}</span>`;
                 } else {
-                    const w = Math.random() > 0.8
-                        ? weatherTypes[Math.floor(Math.random() * 5)]
-                        : baseWeather;
+                    const w = weatherByDay[i] || fallback;
                     cell.innerHTML = `<span class="day-num">${i}</span><span class="weather-icon">${w.icon}</span>`;
                     cell.onclick = () => updateEntry(i, w);
                 }
@@ -554,6 +588,8 @@
         async function initCalendar() {
             navigator.geolocation.getCurrentPosition(async (pos) => {
                 const { latitude: lat, longitude: lon } = pos.coords;
+
+                // City name
                 try {
                     const geoRes  = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
                     const geoData = await geoRes.json();
@@ -563,8 +599,23 @@
                     const cityEl = document.getElementById('userCity');
                     if (cityEl) cityEl.innerText = detectedCity;
                 } catch (e) { console.warn("City fetch failed:", e); }
-                populateGrid(await fetchLocalWeather(lat, lon));
-            }, () => populateGrid(weatherTypes[0]));
+
+                // Fetch historical + current in parallel
+                const [weatherByDay, todayWeather] = await Promise.all([
+                    fetchHistoricalWeather(lat, lon, currentMonth).catch(() => ({})),
+                    fetchLocalWeather(lat, lon)
+                ]);
+
+                // Pin today's live reading onto the current day cell
+                const today = new Date();
+                const monthStart = new Date(YEAR, currentMonth - 1, 1);
+                const monthEnd   = new Date(YEAR, currentMonth, 1);
+                if (today >= monthStart && today < monthEnd) {
+                    weatherByDay[today.getDate()] = todayWeather;
+                }
+
+                populateGrid(weatherByDay, todayWeather);
+            }, () => populateGrid({}, weatherTypes[0]));
         }
 
         // ── INIT ──────────────────────────────────────────────────────────────
