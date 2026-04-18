@@ -214,6 +214,7 @@ img { max-width: 100%; display: block; }
 .tab-poet   { background: var(--pink);     color: #6a3a5a; }
 .tab-mean   { background: var(--mauve);    color: #6a4a5a; }
 .tab-about  { background: var(--parchment);color: #5a4a2a; }
+.tab-wthr   { background: var(--base);     color: #2a5a5a; }
 
 .tab-pens::after   { border-top: 8px solid var(--blush); }
 .tab-inks::after   { border-top: 8px solid var(--teal); }
@@ -222,6 +223,7 @@ img { max-width: 100%; display: block; }
 .tab-poet::after   { border-top: 8px solid var(--pink); }
 .tab-mean::after   { border-top: 8px solid var(--mauve); }
 .tab-about::after  { border-top: 8px solid var(--parchment); }
+.tab-wthr::after   { border-top: 8px solid var(--base); }
 
 /* ============================================================
    HERO — HOMEPAGE
@@ -1029,160 +1031,4 @@ html {
   font-family: var(--font-hand); 
   font-size: 16px;
   color: var(--slate);
-}
-
-/* ============================================================
-   MOBILE JOURNAL TABS — Right-edge vertical tab strip
-   Only active on screens ≤ 768px
-   ============================================================ */
-
-@media (max-width: 768px) {
-
-  /* ── Hide the horizontal nav tabs on mobile ── */
-  .nav-tabs { display: none; }
-
-  /* ── Slim down header top on mobile ── */
-  .header-top {
-    padding: 0.75rem 1rem 0.6rem;
-  }
-
-  .site-title {
-    font-size: 26px !important;
-  }
-
-  .site-tagline {
-    font-size: 12px;
-    letter-spacing: 0.06em;
-  }
-
-  /* ── Hero adjustments ── */
-  .hero {
-    height: 65vh;
-    min-height: 360px;
-  }
-
-  .hero-title {
-    font-size: clamp(2.2rem, 10vw, 3.2rem) !important;
-  }
-
-  .hero-kicker { font-size: 15px; }
-  .hero-sub { font-size: 14px; letter-spacing: 0.08em; }
-
-  /* ── General section padding ── */
-  .section { padding: 1.75rem 1rem; }
-  .seal-divider { padding: 0.6rem 1rem; }
-
-  /* ── Cards ── */
-  .card-grid { grid-template-columns: 1fr; }
-  .ci-grid   { grid-template-columns: repeat(2, 1fr); }
-  .poem-grid { grid-template-columns: 1fr; }
-
-  /* ── About page 2-col grid → stack ── */
-  main .section > div[style*="grid-template-columns: 1fr 1fr"] {
-    display: block !important;
-  }
-
-  /* ── Post body padding ── */
-  .post-wrap { padding: 1.25rem 1rem; }
-
-  /* ── Footer ── */
-  .site-footer { padding: 2rem 1rem; }
-  .footer-nav  { gap: 0.6rem; }
-
-  /* ── Swatch gallery ── */
-  .swatch-filters { gap: 6px; }
-  .swatch-filter  { font-size: 13px; padding: 4px 12px; }
-
-  /* ── Right edge: make room so content isn't hidden behind tabs ── */
-  body { padding-right: 36px; }
-
-}
-
-/* ============================================================
-   JOURNAL TAB STRIP — the floating right-edge tabs
-   ============================================================ */
-
-.journal-tabs {
-  display: none; /* hidden on desktop */
-}
-
-@media (max-width: 768px) {
-
-  .journal-tabs {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    z-index: 999;
-    gap: 0;
-    /* subtle drop shadow on the whole strip */
-    filter: drop-shadow(-3px 2px 6px rgba(93,107,107,0.28));
-  }
-
-  .jtab {
-    position: relative;
-    right: 0;
-    width: 28px;           /* collapsed peek width */
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    text-decoration: none;
-    transition: width 0.25s cubic-bezier(.4,0,.2,1),
-                box-shadow 0.25s ease;
-    overflow: hidden;
-    border-radius: 6px 0 0 6px;
-    border-top: 1px solid rgba(255,255,255,0.45);
-    border-left: 1px solid rgba(255,255,255,0.45);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-
-  /* Expanded on active page */
-  .jtab.jtab-active {
-    width: 46px;
-    box-shadow: -4px 0 12px rgba(93,107,107,0.22);
-  }
-
-  /* Tab label — rotated text */
-  .jtab-label {
-    font-family: 'Caveat', cursive;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    white-space: nowrap;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg); /* bottom-to-top reading */
-    opacity: 0.82;
-    padding: 4px 0;
-    line-height: 1;
-    transition: opacity 0.2s;
-  }
-
-  .jtab:hover { width: 46px; }
-  .jtab:hover .jtab-label { opacity: 1; }
-
-  /* Active indicator: a small notch/ear on the left edge */
-  .jtab.jtab-active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 28px;
-    border-radius: 0 3px 3px 0;
-    background: rgba(255,255,255,0.7);
-  }
-
-  /* ── Per-tab colors ── */
-  .jtab-pens   { background: var(--blush);     color: #7a4f4e; }
-  .jtab-inks   { background: var(--teal);      color: #1e5a5a; }
-  .jtab-jrnl   { background: var(--sage);      color: #4a5a4a; }
-  .jtab-poet   { background: var(--pink);      color: #6a3a5a; }
-  .jtab-mean   { background: var(--mauve);     color: #6a4a5a; }
-  .jtab-about  { background: var(--parchment); color: #5a4a2a; }
-
 }

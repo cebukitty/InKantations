@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Diary 2026 — InKantations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Playfair+Display:ital,wght@0,400;1,400;1,600&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --desk-wood:   #5D6B6B;
+            --paper:       #F7F3F0;
+            --ink:         #5D6B6B;
+            --accent:      #F7CBCA;
+            --pencil-gray: #8a9a9a;
+            --line-color:  #CDD3C2;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--desk-wood);
+            font-family: 'Lora', serif;
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 40px 0;
+            transition: background-color 0.5s ease;
+        }
+
+        /* ── MONTH NAVIGATION ── */
+        .month-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Caveat', cursive;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .month-nav button {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.9);
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            padding: 6px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .month-nav button:hover:not(:disabled) {
+            background: rgba(255,255,255,0.28);
+            transform: translateY(-2px);
+        }
+
+        .month-nav button:disabled { opacity: 0.2; cursor: default; }
+
+        .month-nav span {
+            min-width: 170px;
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── JOURNAL SPREAD ── */
+        .journal-spread {
+            background: var(--paper);
+            width: 100%;
+            max-width: 1100px;
+            min-height: 750px;
+            display: flex;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            transform: rotate(-0.5deg);
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .journal-flower {
+            position: absolute;
+            top: -45px;
+            left: -35px;
+            font-size: 80px;
+            filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.1)) sepia(0.15);
+            z-index: 10;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .journal-sticker {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            padding: 5px 15px;
+            font-family: 'Caveat', cursive;
+            font-weight: 700;
+            font-size: 1rem;
+            transform: rotate(15deg);
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.12);
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .page-left::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+            width: 300px;
+            height: 300px;
+            background-image: url('angelskin.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: rotate(-20deg);
+            filter: drop-shadow(15px 15px 10px rgba(0,0,0,0.2)) sepia(0.2);
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .binding-line {
+            position: absolute;
+            left: 50%;
+            top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.02) 50%, rgba(0,0,0,0.05));
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .page { flex: 1; padding: 60px 45px; position: relative; }
+        .page-left { border-right: 1px solid rgba(0,0,0,0.05); }
+
+        .month-header {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 3rem;
+            color: var(--ink);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            border: 1px solid var(--line-color);
+            padding: 10px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .day-label {
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+            text-align: center;
+            padding-bottom: 5px;
+            color: var(--pencil-gray);
+        }
+
+        .day-cell {
+            aspect-ratio: 1;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+        }
+
+        .day-cell.empty { border: none; cursor: default; }
+
+        .day-cell:hover:not(.future):not(.empty) {
+            transform: translateY(-3px);
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .day-num {
+            position: absolute;
+            top: 2px; left: 4px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .weather-icon { font-size: 1.5rem; }
+
+        .page-right { display: flex; flex-direction: column; }
+
+        .entry-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--accent);
+            margin-bottom: 25px;
+            padding-bottom: 8px;
+        }
+
+        .weather-story {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 1.6rem;
+            line-height: 2.2rem;
+            flex: 1;
+            background-image: linear-gradient(var(--line-color) 1px, transparent 1px);
+            background-size: 100% 2.2rem;
+        }
+
+        .note-pad {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px dashed var(--accent);
+            font-family: 'Caveat', cursive;
+            font-size: 1.2rem;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 900px) {
+            body { padding: 20px; }
+            .month-nav { margin-bottom: 1rem; }
+            .journal-spread { flex-direction: column; transform: none; }
+            .page-left::before, .journal-flower { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="month-nav">
+        <button id="prevBtn">← Prev</button>
+        <span id="monthLabel">Loading...</span>
+        <button id="nextBtn">Next →</button>
+    </div>
+
+    <main class="journal-spread">
+        <div class="binding-line"></div>
+        <div class="journal-flower" id="journalFlower"></div>
+        <div class="journal-sticker" id="journalSticker"></div>
+
+        <section class="page page-left">
+            <h1 class="month-header" id="monthHeader"></h1>
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </section>
+
+        <section class="page page-right" id="entryPanel">
+            <div class="entry-date" id="viewDate">Select a date</div>
+            <div class="weather-story" id="viewText">
+                Waiting for the ink to dry and the winds from <span id="userCity">your city</span> to arrive...
+            </div>
+            <div class="note-pad" id="notePad">
+                <strong>Ink Notes:</strong>
+                <p id="viewNotes">The weather defines the local atmosphere. Select a date to read its story.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="siteFooter" style="
+        padding: 2.5rem 3rem;
+        text-align: center;
+        font-family: 'Caveat', cursive;
+        align-self: stretch;
+        margin-top: auto;
+    ">
+        <div style="font-size:1.5rem; font-weight:700; margin-bottom:0.5rem; letter-spacing:0.04em;">InKantations</div>
+        <nav aria-label="Footer navigation" style="display:flex; justify-content:center; flex-wrap:wrap; gap:1.25rem; margin-bottom:1.25rem;">
+            <a href="category-pens.html" style="opacity:0.65; text-decoration:none; font-size:15px;">Fountain Pen Reviews</a>
+            <a href="category-inks.html" style="opacity:0.65; text-decoration:none; font-size:15px;">Inks</a>
+            <a href="category-jrnl.html" style="opacity:0.65; text-decoration:none; font-size:15px;">Journals</a>
+            <a href="category-poet.html" style="opacity:0.65; text-decoration:none; font-size:15px;">Poetry</a>
+            <a href="category-mean.html" style="opacity:0.65; text-decoration:none; font-size:15px;">Inklings</a>
+            <a href="weather-diary.html" style="opacity:1;    text-decoration:none; font-size:15px;">Weather Diary</a>
+            <a href="about.html"         style="opacity:0.65; text-decoration:none; font-size:15px;">About Me</a>
+        </nav>
+        <div style="width:60px; height:1px; background:rgba(255,255,255,0.2); margin:0 auto 0.75rem;"></div>
+        <p style="font-size:15px; opacity:0.45;">Written with love &amp; a wet nib.</p>
+        <p style="font-size:13px; opacity:0.3; margin-top:4px;">&copy; 2026 Cat Hermoso. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const YEAR = 2026;
+
+        const MONTHS = {
+            1:  { name:'January',   days:31, offset:4,
+                  desk:'#3a4a58', paper:'#f5f8fc', ink:'#2a3a4a', accent:'#D5E6E5',
+                  pencilGray:'#7a8a9a', lineColor:'#c0ccd8',
+                  stickerBg:'#D5E6E5', stickerColor:'#2a4a5a',
+                  notePadBg:'rgba(109,215,216,0.07)', footerBg:'#2a3a48',
+                  flower:'❄️', sticker:'❄️ January Frost',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(200,220,240,0.15) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(150,180,210,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#3a8ab0', Rainy:'#2a4a6a', Cloudy:'#5a7a8a', Windy:'#4a6a7a', Stormy:'#2a3a4a' } },
+
+            2:  { name:'February',  days:28, offset:0,
+                  desk:'#6a4a58', paper:'#fdf5f8', ink:'#4a2a3a', accent:'#F7CBCA',
+                  pencilGray:'#9a7a88', lineColor:'#e0c8d0',
+                  stickerBg:'#F7CBCA', stickerColor:'#6a2a3a',
+                  notePadBg:'rgba(247,203,202,0.12)', footerBg:'#5a3a48',
+                  flower:'🌹', sticker:'💌 February',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(240,200,210,0.15) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(200,150,170,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#c96080', Rainy:'#6a3a5a', Cloudy:'#9a7a88', Windy:'#b07090', Stormy:'#5a2a4a' } },
+
+            3:  { name:'March',     days:31, offset:0,
+                  desk:'#4a5a44', paper:'#f5f8f3', ink:'#2a3a28', accent:'#CDD3C2',
+                  pencilGray:'#7a8a78', lineColor:'#b8c8b0',
+                  stickerBg:'#CDD3C2', stickerColor:'#2a3a28',
+                  notePadBg:'rgba(109,180,100,0.07)', footerBg:'#3a4a38',
+                  flower:'🌱', sticker:'🌱 March Awakens',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(180,210,160,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(140,170,120,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#6a9a50', Rainy:'#3a5a38', Cloudy:'#7a8a70', Windy:'#5a7a58', Stormy:'#3a4a38' } },
+
+            4:  { name:'April',     days:30, offset:3,
+                  desk:'#5D6B6B', paper:'#F7F3F0', ink:'#5D6B6B', accent:'#F7CBCA',
+                  pencilGray:'#8a9a9a', lineColor:'#CDD3C2',
+                  stickerBg:'#F7CBCA', stickerColor:'#5D6B6B',
+                  notePadBg:'rgba(247,203,202,0.10)', footerBg:'#4a5858',
+                  flower:'🌸', sticker:'⭐ April Memories',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(93,107,107,0.15) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(109,215,216,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#3a9a9a', Rainy:'#5D6B6B', Cloudy:'#8a9a9a', Windy:'#6a9a9a', Stormy:'#3a5a5a' } },
+
+            5:  { name:'May',       days:31, offset:5,
+                  desk:'#7a6a50', paper:'#fdf8f2', ink:'#4a3a2a', accent:'#f0d6e8',
+                  pencilGray:'#9a8a7a', lineColor:'#d5c8b8',
+                  stickerBg:'#CDD3C2', stickerColor:'#4a5a3a',
+                  notePadBg:'rgba(201,168,76,0.07)', footerBg:'#5a4a38',
+                  flower:'🌷', sticker:'🌿 May in Bloom',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(255,220,120,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(200,170,100,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#c9a84c', Rainy:'#7a6a9a', Cloudy:'#9a8a7a', Windy:'#6a9a6a', Stormy:'#7a6a50' } },
+
+            6:  { name:'June',      days:30, offset:1,
+                  desk:'#6a5230', paper:'#fefaf4', ink:'#3a2a10', accent:'#f5dfa0',
+                  pencilGray:'#9a8860', lineColor:'#e0c878',
+                  stickerBg:'#f5dfa0', stickerColor:'#3a2a10',
+                  notePadBg:'rgba(245,223,120,0.08)', footerBg:'#5a4228',
+                  flower:'🌻', sticker:'☀️ June Sunshine',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(255,220,80,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(210,170,60,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#e8a820', Rainy:'#6a7a50', Cloudy:'#9a8858', Windy:'#7a9a58', Stormy:'#5a5a38' } },
+
+            7:  { name:'July',      days:31, offset:3,
+                  desk:'#7a4830', paper:'#fef8f2', ink:'#4a2818', accent:'#f5c090',
+                  pencilGray:'#9a7868', lineColor:'#e0b888',
+                  stickerBg:'#f5c090', stickerColor:'#4a2818',
+                  notePadBg:'rgba(245,160,80,0.07)', footerBg:'#6a3828',
+                  flower:'🌺', sticker:'🌺 July Bloom',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(240,160,80,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(200,120,60,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#e87030', Rainy:'#5a6a8a', Cloudy:'#9a8070', Windy:'#8a9a70', Stormy:'#4a5a6a' } },
+
+            8:  { name:'August',    days:31, offset:6,
+                  desk:'#6a5838', paper:'#fefaf4', ink:'#3a2a18', accent:'#e8d8a0',
+                  pencilGray:'#9a8870', lineColor:'#d8c888',
+                  stickerBg:'#e8d8a0', stickerColor:'#3a2a18',
+                  notePadBg:'rgba(232,216,120,0.08)', footerBg:'#5a4828',
+                  flower:'🌾', sticker:'🌾 August Harvest',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(220,190,80,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(180,150,60,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#c89030', Rainy:'#6a6a50', Cloudy:'#8a8868', Windy:'#7a8a60', Stormy:'#5a5a40' } },
+
+            9:  { name:'September', days:30, offset:2,
+                  desk:'#6a4828', paper:'#fdf6ee', ink:'#3a2010', accent:'#e8b880',
+                  pencilGray:'#9a7858', lineColor:'#d8a868',
+                  stickerBg:'#e8b880', stickerColor:'#3a2010',
+                  notePadBg:'rgba(232,160,80,0.07)', footerBg:'#5a3818',
+                  flower:'🍂', sticker:'🍂 September Turns',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(220,140,60,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(180,100,40,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#d87838', Rainy:'#6a4a28', Cloudy:'#9a7858', Windy:'#8a7848', Stormy:'#5a3a20' } },
+
+            10: { name:'October',   days:31, offset:4,
+                  desk:'#5a3818', paper:'#fdf4ec', ink:'#3a1808', accent:'#e89858',
+                  pencilGray:'#9a6848', lineColor:'#c88848',
+                  stickerBg:'#e89858', stickerColor:'#3a1808',
+                  notePadBg:'rgba(232,120,48,0.07)', footerBg:'#4a2810',
+                  flower:'🍁', sticker:'🍁 October Amber',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(200,100,40,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(160,60,20,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#c86028', Rainy:'#5a3a28', Cloudy:'#9a6848', Windy:'#7a5838', Stormy:'#4a2818' } },
+
+            11: { name:'November',  days:30, offset:0,
+                  desk:'#4a4840', paper:'#f8f5f0', ink:'#282820', accent:'#c8b8a0',
+                  pencilGray:'#888078', lineColor:'#b8a890',
+                  stickerBg:'#c8b8a0', stickerColor:'#282820',
+                  notePadBg:'rgba(180,160,120,0.07)', footerBg:'#383830',
+                  flower:'🍃', sticker:'🍃 November Mist',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(160,150,120,0.12) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(120,110,80,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#8a7858', Rainy:'#3a3a48', Cloudy:'#6a6a60', Windy:'#5a6a58', Stormy:'#2a2a38' } },
+
+            12: { name:'December',  days:31, offset:2,
+                  desk:'#2a3848', paper:'#f5f8fc', ink:'#182030', accent:'#D5E6E5',
+                  pencilGray:'#6a7a8a', lineColor:'#a8b8c8',
+                  stickerBg:'#F7CBCA', stickerColor:'#3a1828',
+                  notePadBg:'rgba(109,215,216,0.07)', footerBg:'#1a2838',
+                  flower:'✨', sticker:'✨ December Magic',
+                  bg:'radial-gradient(circle at 15% 15%, rgba(100,150,200,0.15) 0%, transparent 50%), radial-gradient(circle at 85% 85%, rgba(80,120,170,0.08) 0%, transparent 50%)',
+                  inkColors:{ Sunny:'#3a7ab0', Rainy:'#2a3a5a', Cloudy:'#5a6a7a', Windy:'#4a6a88', Stormy:'#1a2a3a' } }
+        };
+
+        const weatherTypes = [
+            { icon:'☀️', mood:'Sunny',   desc:'A bright, smiling day with golden rays.' },
+            { icon:'☁️', mood:'Cloudy',  desc:'The sky is wearing a soft, gray blanket.' },
+            { icon:'🌧️', mood:'Rainy',   desc:'Little hearts falling from the sky.' },
+            { icon:'🌈', mood:'Rainbow', desc:'A magical bridge after a light sprinkle.' },
+            { icon:'🌬️', mood:'Windy',   desc:'The trees are dancing in a cool breeze.' }
+        ];
+
+        let currentMonth;
+        let detectedCity = "this quiet place";
+
+        // ── THEME ─────────────────────────────────────────────────────────────
+        function applyTheme(m) {
+            const c = MONTHS[m];
+            const r = document.documentElement.style;
+            r.setProperty('--desk-wood',   c.desk);
+            r.setProperty('--paper',       c.paper);
+            r.setProperty('--ink',         c.ink);
+            r.setProperty('--accent',      c.accent);
+            r.setProperty('--pencil-gray', c.pencilGray);
+            r.setProperty('--line-color',  c.lineColor);
+
+            document.body.style.backgroundColor = c.desk;
+            document.body.style.backgroundImage = c.bg;
+
+            document.getElementById('monthHeader').textContent   = `${c.name} ${YEAR}`;
+            document.getElementById('monthLabel').textContent    = `${c.name} ${YEAR}`;
+            document.getElementById('journalFlower').textContent = c.flower;
+
+            const sticker          = document.getElementById('journalSticker');
+            sticker.textContent    = c.sticker;
+            sticker.style.background = c.stickerBg;
+            sticker.style.color      = c.stickerColor;
+
+            const notePad              = document.getElementById('notePad');
+            notePad.style.background   = c.notePadBg;
+            notePad.style.borderColor  = c.accent;
+
+            const footer           = document.getElementById('siteFooter');
+            footer.style.background = c.footerBg;
+            footer.style.color      = c.paper;
+
+            document.title = `Weather Diary · ${c.name} ${YEAR} — InKantations`;
+
+            document.getElementById('viewDate').textContent       = 'Select a date';
+            document.getElementById('viewDate').style.borderColor = c.accent;
+            document.getElementById('viewText').style.color       = c.ink;
+            document.getElementById('viewText').style.backgroundImage     = 'none';
+            document.getElementById('viewText').style.webkitTextFillColor = 'initial';
+            document.getElementById('viewText').innerHTML =
+                `Waiting for the ink to dry and the winds from <span id="userCity">${detectedCity}</span> to arrive...`;
+            document.getElementById('viewNotes').textContent  = `${c.name} days are waiting. Select a date to read its story.`;
+            document.getElementById('viewNotes').style.color  = c.ink;
+        }
+
+        // ── NAVIGATION ────────────────────────────────────────────────────────
+        function goToMonth(m) {
+            if (m < 1 || m > 12) return;
+            const p = new URLSearchParams(window.location.search);
+            p.set('month', m);
+            window.location.search = p.toString();
+        }
+
+        function updateNavButtons(m) {
+            document.getElementById('prevBtn').disabled = (m === 1);
+            document.getElementById('nextBtn').disabled = (m === 12);
+            document.getElementById('prevBtn').onclick  = () => goToMonth(m - 1);
+            document.getElementById('nextBtn').onclick  = () => goToMonth(m + 1);
+        }
+
+        // ── CALENDAR ─────────────────────────────────────────────────────────
+        function populateGrid(baseWeather) {
+            const c     = MONTHS[currentMonth];
+            const grid  = document.getElementById('calendarGrid');
+            const today = new Date();
+
+            const monthStart = new Date(YEAR, currentMonth - 1, 1);
+            const monthEnd   = new Date(YEAR, currentMonth, 1);
+            let currentDay;
+            if      (today < monthStart) currentDay = 0;
+            else if (today < monthEnd)   currentDay = today.getDate();
+            else                         currentDay = c.days;
+
+            grid.innerHTML = `
+                <div class="day-label">Sun</div><div class="day-label">Mon</div>
+                <div class="day-label">Tue</div><div class="day-label">Wed</div>
+                <div class="day-label">Thu</div><div class="day-label">Fri</div>
+                <div class="day-label">Sat</div>
+            `;
+
+            for (let e = 0; e < c.offset; e++) {
+                const empty = document.createElement('div');
+                empty.className = 'day-cell empty';
+                grid.appendChild(empty);
+            }
+
+            for (let i = 1; i <= c.days; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'day-cell';
+                if (i > currentDay) {
+                    cell.classList.add('future');
+                    cell.style.opacity = '0.2';
+                    cell.innerHTML = `<span class="day-num">${i}</span>`;
+                } else {
+                    const w = Math.random() > 0.8
+                        ? weatherTypes[Math.floor(Math.random() * 5)]
+                        : baseWeather;
+                    cell.innerHTML = `<span class="day-num">${i}</span><span class="weather-icon">${w.icon}</span>`;
+                    cell.onclick = () => updateEntry(i, w);
+                }
+                grid.appendChild(cell);
+            }
+        }
+
+        // ── ENTRY PANEL ───────────────────────────────────────────────────────
+        function updateEntry(day, weather) {
+            const c     = MONTHS[currentMonth];
+            const colors = {
+                ...c.inkColors,
+                Rainbow: 'linear-gradient(45deg, #FF6B6B, #FFD93D, #6BCB77, #4D96FF, #9B59B6)'
+            };
+            const selected  = colors[weather.mood] || c.ink;
+            const storyText = document.getElementById('viewText');
+            const notesText = document.getElementById('viewNotes');
+            const dateLine  = document.getElementById('viewDate');
+
+            if (weather.mood === 'Rainbow') {
+                storyText.style.backgroundImage      = colors.Rainbow;
+                storyText.style.webkitBackgroundClip = 'text';
+                storyText.style.webkitTextFillColor  = 'transparent';
+                storyText.style.display              = 'inline-block';
+            } else {
+                storyText.style.backgroundImage     = 'none';
+                storyText.style.webkitTextFillColor = 'initial';
+                storyText.style.color               = selected;
+                storyText.style.fontFamily          = "'Pinyon Script', cursive";
+            }
+
+            notesText.style.color      = (weather.mood === 'Rainbow') ? '#9B59B6' : selected;
+            dateLine.style.borderColor = selected;
+            dateLine.textContent       = `${c.name} ${day}, ${YEAR}`;
+            storyText.innerHTML = `Today in <strong>${detectedCity}</strong>, it is a <em>${weather.mood}</em> day. ${weather.desc}`;
+
+            const panel = document.getElementById('entryPanel');
+            panel.style.opacity = 0;
+            setTimeout(() => { panel.style.opacity = 1; panel.style.transition = 'opacity 0.5s'; }, 50);
+        }
+
+        // ── GEOLOCATION ───────────────────────────────────────────────────────
+        async function fetchLocalWeather(lat, lon) {
+            try {
+                const res  = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+                const data = await res.json();
+                const code = data.current_weather.weathercode;
+                if (code === 0)  return weatherTypes[0];
+                if (code <= 3)   return weatherTypes[1];
+                if (code >= 51)  return weatherTypes[2];
+                return weatherTypes[4];
+            } catch (e) { return weatherTypes[0]; }
+        }
+
+        async function initCalendar() {
+            navigator.geolocation.getCurrentPosition(async (pos) => {
+                const { latitude: lat, longitude: lon } = pos.coords;
+                try {
+                    const geoRes  = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`);
+                    const geoData = await geoRes.json();
+                    const a = geoData.address || {};
+                    detectedCity = a.city || a.town || a.municipality || a.city_district
+                                || a.suburb || a.village || a.county || "this quiet place";
+                    const cityEl = document.getElementById('userCity');
+                    if (cityEl) cityEl.innerText = detectedCity;
+                } catch (e) { console.warn("City fetch failed:", e); }
+                populateGrid(await fetchLocalWeather(lat, lon));
+            }, () => populateGrid(weatherTypes[0]));
+        }
+
+        // ── INIT ──────────────────────────────────────────────────────────────
+        document.addEventListener('DOMContentLoaded', () => {
+            const raw = parseInt(new URLSearchParams(window.location.search).get('month'), 10);
+            currentMonth = (raw >= 1 && raw <= 12) ? raw : new Date().getMonth() + 1;
+            applyTheme(currentMonth);
+            updateNavButtons(currentMonth);
+            initCalendar();
+        });
+    </script>
+
+</body>
+</html>
