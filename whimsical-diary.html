@@ -273,30 +273,46 @@ body::before {
         }
 
         function populateGrid(baseWeather) {
-            const grid = document.getElementById('calendarGrid');
-            const today = new Date();
-            const currentDay = today.getDate();
+    const grid = document.getElementById('calendarGrid');
+    const today = new Date();
+    const currentDay = today.getDate();
+    
+    // 1. Clear existing labels and cells to prevent duplicates
+    grid.innerHTML = `
+        <div class="day-label">Sun</div><div class="day-label">Mon</div>
+        <div class="day-label">Tue</div><div class="day-label">Wed</div>
+        <div class="day-label">Thu</div><div class="day-label">Fri</div>
+        <div class="day-label">Sat</div>
+    `;
 
-            for (let i = 1; i <= 30; i++) {
-                const cell = document.createElement('div');
-                cell.className = 'day-cell';
-                
-                if (i > currentDay) {
-                    cell.classList.add('future');
-                    cell.style.opacity = "0.2";
-                    cell.style.cursor = "default";
-                    cell.innerHTML = `<span class="day-num">${i}</span>`;
-                } else {
-                    const weather = Math.random() > 0.8 ? weatherTypes[Math.floor(Math.random()*5)] : baseWeather;
-                    cell.innerHTML = `
-                        <span class="day-num">${i}</span>
-                        <span class="weather-icon">${weather.icon}</span>
-                    `;
-                    cell.onclick = () => updateEntry(i, weather);
-                }
-                grid.appendChild(cell);
-            }
+    // 2. Add 3 empty cells because April 1, 2026, is a Wednesday
+    for (let e = 0; e < 3; e++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'day-cell empty';
+        grid.appendChild(emptyCell);
+    }
+
+    // 3. Populate the actual days of the month
+    for (let i = 1; i <= 30; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'day-cell';
+        
+        if (i > currentDay) {
+            cell.classList.add('future');
+            cell.style.opacity = "0.2";
+            cell.style.cursor = "default";
+            cell.innerHTML = `<span class="day-num">${i}</span>`;
+        } else {
+            const weather = Math.random() > 0.8 ? weatherTypes[Math.floor(Math.random()*5)] : baseWeather;
+            cell.innerHTML = `
+                <span class="day-num">${i}</span>
+                <span class="weather-icon">${weather.icon}</span>
+            `;
+            cell.onclick = () => updateEntry(i, weather);
         }
+        grid.appendChild(cell);
+    }
+}
 
         function updateEntry(day, weather) {
             const inkColors = {
